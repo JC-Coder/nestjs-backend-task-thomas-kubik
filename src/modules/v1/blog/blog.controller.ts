@@ -1,8 +1,8 @@
 import { Controller, Post, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Get, Param, Put } from '@nestjs/common/decorators';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger/dist';
-import { IResponse } from 'src/common/constants/response';
-import { IBlog } from 'src/common/interfaces/blogDb.interface';
+import { IResponse } from './../../../common/constants/response';
+import { IBlog } from './../../../common/interfaces/blogDb.interface';
 import { BlogService } from './blog.service';
 import { CreatePostDto } from './dto/createPost.dto';
 import { UpdatePostDto } from './dto/updatePost.dto';

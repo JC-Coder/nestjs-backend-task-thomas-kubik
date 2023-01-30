@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { IResponse, ResponseMessage } from 'src/common/constants/response';
-import { PostNotFoundException } from 'src/common/filters/postNotFound.filter';
-import { IBlog } from 'src/common/interfaces/blogDb.interface';
+import { IResponse, ResponseMessage } from './../../../common/constants/response';
+import { PostNotFoundException } from './../../../common/filters/postNotFound.filter';
+import { IBlog } from './../../../common/interfaces/blogDb.interface';
 import { CreatePostDto } from './dto/createPost.dto';
 import { UpdatePostDto } from './dto/updatePost.dto';
 
@@ -10,9 +10,8 @@ export class BlogService {
   private BLOG_POST_ID: number = 1;
   private BLOG_DB: IBlog[] = [];
 
-
-  // find post by id 
-  findPostById(postId: number){
+  // find post by id
+  findPostById(postId: number) {
     return this.BLOG_DB.find((item) => item.id == postId);
   }
 
@@ -37,7 +36,7 @@ export class BlogService {
 
   // get post by id
   getPost(postId: number): IResponse {
-    let post = this.findPostById(postId)
+    let post = this.findPostById(postId);
 
     if (!post) {
       throw new PostNotFoundException(postId);
@@ -63,14 +62,14 @@ export class BlogService {
   }
 
   // delete post by id
-  deletePost(postId: number): IResponse{
+  deletePost(postId: number): IResponse {
     let post = this.findPostById(postId);
 
-    if(!post){
-        throw new PostNotFoundException(postId);
+    if (!post) {
+      throw new PostNotFoundException(postId);
     }
 
-    let postToDeleteIndex = this.BLOG_DB.findIndex(post => post.id == postId);
+    let postToDeleteIndex = this.BLOG_DB.findIndex((post) => post.id == postId);
 
     this.BLOG_DB.splice(postToDeleteIndex, 1);
 

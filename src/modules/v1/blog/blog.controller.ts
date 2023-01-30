@@ -1,12 +1,12 @@
 import { Controller, Post, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Get, Param, Put } from '@nestjs/common/decorators';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger/dist';
-import { ApiProperty } from '@nestjs/swagger/dist/decorators';
 import { IResponse } from 'src/common/constants/response';
 import { IBlog } from 'src/common/interfaces/blogDb.interface';
 import { BlogService } from './blog.service';
 import { CreatePostDto } from './dto/createPost.dto';
 import { UpdatePostDto } from './dto/updatePost.dto';
+import { ApiOperation, ApiParam } from '@nestjs/swagger';
 
 @Controller('blog')
 @ApiTags('blog')
@@ -15,6 +15,7 @@ export class BlogController {
 
   // create post
   @Post()
+  @ApiOperation({ description: 'create new post' })
   @ApiResponse({
     status: 201,
     description: 'A post has been successfully created',
@@ -29,6 +30,7 @@ export class BlogController {
 
   // get all posts
   @Get()
+  @ApiOperation({ description: 'get all posts' })
   @ApiResponse({
     status: 200,
     description: 'Posts fetched successfully',
@@ -39,6 +41,7 @@ export class BlogController {
 
   // get post by id
   @Get(':id')
+  @ApiOperation({ description: 'get post by id' })
   @ApiResponse({
     status: 200,
     description: 'post fetched successfully',
@@ -53,6 +56,7 @@ export class BlogController {
 
   // update post by id
   @Put(':id')
+  @ApiOperation({ description: 'update post by id' })
   @ApiResponse({
     status: 200,
     description: 'post updated successfully',
@@ -70,9 +74,10 @@ export class BlogController {
 
   // delete post by id
   @Delete(':id')
+  @ApiOperation({ description: 'delete post by id' })
   @ApiResponse({
     status: 200,
-    description: 'post fetched successfully',
+    description: 'post deleted successfully',
   })
   @ApiResponse({
     status: 404,

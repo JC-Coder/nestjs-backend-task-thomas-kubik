@@ -29,7 +29,7 @@ $ npm run start
 
 # watch mode
 $ npm run start:dev
-
+```
 
 4. Access the API documentation at `http://localhost:3000/doc`.
 
@@ -39,3 +39,4 @@ $ npm run start:dev
 ```bash
 # unit tests
 $ npm run test
+```
